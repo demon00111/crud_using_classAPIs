@@ -5,20 +5,21 @@
 from .models import Student
 # from django.views.decorators.csrf import csrf_exempt 
 from .serializer import StudentSerializer
-from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
+# from rest_framework.generics import ListCreateAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework import viewsets
 
 from app import serializer
 # Create your views here.
 
 
-class StudentListCreate(ListCreateAPIView):
+class StudentListCreate(viewsets.ReadOnlyModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
 
-class StudentRUDAPI(RetrieveUpdateDestroyAPIView):
-    queryset = Student.objects.all()
-    serializer_class = StudentSerializer
+# class StudentRUDAPI(RetrieveUpdateDestroyAPIView):
+#     queryset = Student.objects.all()
+#     serializer_class = StudentSerializer
 
 
 # @api_view(['GET','POST','PUT','DELETE'])
